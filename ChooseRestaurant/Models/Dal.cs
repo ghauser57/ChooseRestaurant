@@ -64,13 +64,32 @@ namespace ChooseRestaurant.Models
             return db.Users.FirstOrDefault(u => u.Id == id);
         }
 
+        //Modification to have differents users
         public User GetUser(string idStr)
         {
-            int id;
-            if (int.TryParse(idStr, out id))
+            switch (idStr)
+            {
+                case "Chrome":
+                    return CreateOrGetBack("Nico", "1234");
+                case "IE":
+                    return CreateOrGetBack("Jérémie", "1234");
+                case "Firefox":
+                    return CreateOrGetBack("Delphine", "1234");
+                default:
+                    return CreateOrGetBack("Timéo", "1234");
+            }
+        }
+
+        private User CreateOrGetBack(string login, string password)
+        {
+            User user = Authenticate(login, password);
+            if (user == null)
+            {
+                int id = AddUser(login, password);
                 return GetUser(id);
-            return null;
-        }        
+            }
+            return user;
+        }
 
         public int CreateSurvey()
         {
@@ -111,13 +130,13 @@ namespace ChooseRestaurant.Models
 
         public bool HasVoted(int idSurvey, string idStr)
         {
-            int id;
-            if (int.TryParse(idStr, out id))
+            User user = GetUser(idStr);
+            if (user != null)
             {
-                Survey survey = db.Surveys.First(s => s.Id == idSurvey);
-                if (survey.Votes == null)
+                Survey Survey = db.Surveys.First(s => s.Id == idSurvey);
+                if (Survey.Votes == null)
                     return false;
-                return survey.Votes.Any(v => v.User != null && v.User.Id == id);
+                return Survey.Votes.Any(v => v.User != null && v.User.Id == user.Id);
             }
             return false;
         }

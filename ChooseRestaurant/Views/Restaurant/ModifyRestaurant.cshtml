@@ -1,0 +1,35 @@
+﻿@model ChooseRestaurant.Models.Resto
+@{
+    ViewBag.Title = "ModifyRestaurant";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ModifyRestaurant</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <fieldset>
+            <legend>Modify restaurant</legend>
+
+            <div>
+                @Html.LabelFor(model => model.Name)
+                @Html.TextBoxFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+            <div>
+                @Html.LabelFor(model => model.Phone)
+                @Html.TextBoxFor(model => model.Phone)
+                @Html.ValidationMessageFor(model => model.Phone)
+            </div>
+            <br />
+            <input type="submit" value="Modify" />
+        </fieldset>
+    }
+</body>
+</html>

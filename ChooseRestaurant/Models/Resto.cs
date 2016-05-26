@@ -11,8 +11,9 @@ namespace ChooseRestaurant.Models
     public class Resto
     {
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "The restaurant need a name")]
         public string Name { get; set; }
+        [RegularExpression(@"^0[0-9]{9}$", ErrorMessage = "The phone number is not correct")]
         public string Phone { get; set; }
     }
 }
