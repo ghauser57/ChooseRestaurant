@@ -1,0 +1,36 @@
+﻿@model ChooseRestaurant.ViewModels.UserViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model.Authenticated)
+{
+    <h3>
+        You are already logged :
+        @Model.User.Login
+    </h3>
+    @Html.ActionLink("Do you want to disconnect ?", "Disconnection")
+}
+else
+{
+    <p>
+        Please authentify yourself :
+    </p>
+    using (Html.BeginForm())
+    {
+        <div>
+            @Html.LabelFor(m => m.User.Login)
+            @Html.TextBoxFor(m => m.User.Login)
+            @Html.ValidationMessageFor(m => m.User.Login)
+        </div>
+        <div>
+            @Html.LabelFor(m => m.User.Password)
+            @Html.PasswordFor(m => m.User.Password)
+            @Html.ValidationMessageFor(m => m.User.Password)
+        </div>
+        <input type="submit" value="Connect" />
+        <br />
+        @Html.ActionLink("Create an account", "CreateAccount")
+    }
+}

@@ -1,0 +1,21 @@
+﻿@model ChooseRestaurant.Models.User
+@{
+    ViewBag.Title = "CreateAccount";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>Create un compte : </p>
+@using (Html.BeginForm())
+{
+    <div>
+        @Html.LabelFor(m => m.Login)
+        @Html.TextBoxFor(m => m.Login)
+        @Html.ValidationMessageFor(m => m.Login)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Password)
+        @Html.PasswordFor(m => m.Password)
+        @Html.ValidationMessageFor(m => m.Password)
+    </div>
+    <input type="submit" value="Create" />
+}

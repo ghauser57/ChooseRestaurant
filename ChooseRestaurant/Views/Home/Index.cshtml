@@ -3,22 +3,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <p>Ready to choose a restaurant ?</p>
-    @using (Html.BeginForm())
-    {
-        <input type="submit" value="Create survey" />
-    }
-    <ul>
-        <li>@Html.ActionLink("Add restaurant", "CreateRestaurant", "Restaurant")</li>
-        <li>@Html.ActionLink("Modify restaurants", "Index", "Restaurant")</li>
-    </ul>
-</body>
-</html>
+<p>Ready to choose a restaurant ?</p>
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Create survey" />
+}
+<ul>
+    <li>@Html.ActionLink("Add restaurant", "CreateRestaurant", "Restaurant")</li>
+    <li>@Html.ActionLink("Modify restaurants", "Index", "Restaurant")</li>
+</ul>

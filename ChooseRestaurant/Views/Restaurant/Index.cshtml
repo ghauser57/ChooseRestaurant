@@ -4,37 +4,19 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-    <style type="text/css">
-        table {
-            border-collapse: collapse;
-        }
-
-        td, th {
-            border: 1px solid black;
-        }
-    </style>
-</head>
-<body>
-    <table>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Modify</th>
+    </tr>
+    @foreach (var resto in Model)
+    {
         <tr>
-            <th>Name</th>
-            <th>Phone</th>
-            <th>Modify</th>
+            <td>@resto.Name</td>
+            <td>@resto.Phone</td>
+            <td>@Html.ActionLink("Modify " + resto.Name, "ModifyRestaurant", new { id = resto.Id })</td>
         </tr>
-        @foreach (var resto in Model)
-        {
-            <tr>
-                <td>@resto.Name</td>
-                <td>@resto.Phone</td>
-                <td>@Html.ActionLink("Modify " + resto.Name, "ModifyRestaurant", new { id = resto.Id })</td>
-            </tr>
-        }
-    </table>
-</body>
-</html>
+    }
+</table>
+

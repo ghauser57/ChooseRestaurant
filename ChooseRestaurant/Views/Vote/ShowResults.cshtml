@@ -4,30 +4,20 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Show results</title>
-    <link type="text/css" href="~/Content/Site.css" rel="stylesheet" />
-</head>
-<body>
-    <p>Results of the survey :</p>
-    <table>
+<p>Results of the survey :</p>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Number of votes</th>
+    </tr>
+    @foreach (var resto in Model)
+    {
         <tr>
-            <th>Name</th>
-            <th>Phone</th>
-            <th>Number of votes</th>
+            <td>@resto.Name</td>
+            <td>@resto.Phone</td>
+            <td>@resto.NumberOfVotes</td>
         </tr>
-        @foreach (var resto in Model)
-        {
-            <tr>
-                <td>@resto.Name</td>
-                <td>@resto.Phone</td>
-                <td>@resto.NumberOfVotes</td>
-            </tr>
-        }
-    </table>
-</body>
-</html>
+    }
+</table>
+

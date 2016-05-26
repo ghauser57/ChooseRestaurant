@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace ChooseRestaurant.Controllers
 {
+    [Authorize]
     public class VoteController : Controller
     {
         // GET: Vote
@@ -28,7 +29,7 @@ namespace ChooseRestaurant.Controllers
             {
                 ListOfResto = dal.GetAllRestaurants().Select(r => new RestaurantCheckBoxViewModel { Id = r.Id, NameAndPhone = string.Format("{0} ({1})", r.Name, r.Phone) }).ToList()
             };
-            if (dal.HasVoted(id, Request.Browser.Browser))
+            if (dal.HasVoted(id, HttpContext.User.Identity.Name))
             {
                 return RedirectToAction("ShowResults", new { id = id });
             }
@@ -40,7 +41,7 @@ namespace ChooseRestaurant.Controllers
         {
             if (!ModelState.IsValid)
                 return View(viewModel);
-            User User = dal.GetUser(Request.Browser.Browser);
+            User User = dal.GetUser(HttpContext.User.Identity.Name);
             if (User == null)
                 return new HttpUnauthorizedResult();
             foreach (RestaurantCheckBoxViewModel restaurantCheckBoxViewModel in viewModel.ListOfResto.Where(r => r.IsSelected))
@@ -52,7 +53,7 @@ namespace ChooseRestaurant.Controllers
 
         public ActionResult ShowResults(int id)
         {
-            if (!dal.HasVoted(id, Request.Browser.Browser))
+            if (!dal.HasVoted(id, HttpContext.User.Identity.Name))
             {
                 return RedirectToAction("Index", new { id = id });
             }
