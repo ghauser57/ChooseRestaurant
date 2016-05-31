@@ -7,8 +7,8 @@ namespace ChooseRestaurant.Models
 {
     public interface IDal : IDisposable
     {
-        void CreateRestaurant(string name, string phone);
-        void ModifyRestaurant(int id, string name, string phone);
+        void CreateRestaurant(string name, string phone/*, string email, string location, string details*/);
+        void ModifyRestaurant(int id, string name, string phone/*, string email, string location, string details*/);
         List<Resto> GetAllRestaurants();
         bool RestaurantExist(string nom);
 

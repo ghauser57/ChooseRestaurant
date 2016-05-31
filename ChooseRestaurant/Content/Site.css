@@ -4,11 +4,12 @@
 }
 
 /* Set padding to keep content from hitting the edges */
+/*
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
 }
-
+*/
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
@@ -28,4 +29,41 @@ table {
 
  td, th {
      border: 1px solid black;
+}
+
+ul.menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+li.left {
+    float: left;
+    border-right:1px solid #bbb;
+}
+
+li.right {
+    float: right;
+    border-left:1px solid #bbb;
+}
+
+li a.navbar {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a.navbar-active:hover {
+    background-color: #111;
+}
+
+.navbar-active {
+    background-color: #4CAF50;
 }

@@ -1,6 +1,7 @@
 ﻿@model List<ChooseRestaurant.Models.Resto>
 @{
     ViewBag.Title = "Index";
+    ViewBag.Name = "Resto";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -10,13 +11,16 @@
         <th>Phone</th>
         <th>Modify</th>
     </tr>
-    @foreach (var resto in Model)
-    {
+        @foreach (var resto in Model)
+        {
         <tr>
             <td>@resto.Name</td>
             <td>@resto.Phone</td>
             <td>@Html.ActionLink("Modify " + resto.Name, "ModifyRestaurant", new { id = resto.Id })</td>
-        </tr>
-    }
+</tr>
+            
+
+
+        }
 </table>
 

@@ -22,19 +22,22 @@ namespace ChooseRestaurant.Models
             return db.Restos.ToList();
         }
 
-        public void CreateRestaurant(string name, string phone)
+        public void CreateRestaurant(string name, string phone/*, string email, string location, string details*/)
         {
-            db.Restos.Add(new Resto { Name = name, Phone = phone });
+            db.Restos.Add(new Resto { Name = name, Phone = phone/*, Email = email, Location = location, Details = details */});
             db.SaveChanges();
         }
 
-        public void ModifyRestaurant(int id, string name, string phone)
+        public void ModifyRestaurant(int id, string name, string phone/*, string email, string location, string details*/)
         {
             Resto restoFound = db.Restos.FirstOrDefault(resto => resto.Id == id);
             if (restoFound != null)
             {
                 restoFound.Name = name;
                 restoFound.Phone = phone;
+                /*restoFound.Email = email;
+                restoFound.Location = location;
+                restoFound.Details = details;*/
                 db.SaveChanges();
             }
         }

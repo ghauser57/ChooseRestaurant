@@ -66,5 +66,13 @@ namespace ChooseRestaurant.Controllers
             dal.ModifyRestaurant(resto.Id, resto.Name, resto.Phone);
             return RedirectToAction("Index");
         }
+
+        public ActionResult ShowDetailsRestaurant(Resto resto)
+        {
+            if (!ModelState.IsValid)
+                return View(resto);
+            dal.ModifyRestaurant(resto.Id, resto.Name, resto.Phone);
+            return RedirectToAction("Index");
+        }
     }
 }

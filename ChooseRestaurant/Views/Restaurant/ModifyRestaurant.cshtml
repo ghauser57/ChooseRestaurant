@@ -1,6 +1,7 @@
 ﻿@model ChooseRestaurant.Models.Resto
 @{
     ViewBag.Title = "ModifyRestaurant";
+    ViewBag.Name = "Resto";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -13,6 +14,21 @@
     <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+<!--<script type="text/javascript">
+        jQuery.validator.addMethod("verifcontact",
+        function (value, element, params) {
+            var tel = $("#" + params.parametre1).val();
+            var email = $("#" + params.parametre2).val();
+            return tel != '' || email != '';
+        });
+
+        jQuery.validator.unobtrusive.adapters.add
+            ("verifcontact", ["parametre1", "parametre2"], function (options) {
+                options.rules["verifcontact"] = options.params;
+                options.messages["verifcontact"] = options.message;
+        });
+    </script>-->
 </head>
 <body>
     @using (Html.BeginForm())
@@ -27,7 +43,7 @@
             </div>
             <div>
                 @Html.LabelFor(model => model.Phone)
-                @Html.TextBoxFor(model => model.Phone)
+                @Html.TextBoxFor(model => model.Phone/*, new { data_val_verifcontact = "Vous devez saisir au moins un moyen de contacter le restaurant", data_val_verifcontact_parametre1 = "Phone", data_val_verifcontact_parametre2 = "Email" }*/)
                 @Html.ValidationMessageFor(model => model.Phone)
             </div>
             <br />

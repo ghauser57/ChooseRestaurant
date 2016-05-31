@@ -1,0 +1,17 @@
+﻿@model ChooseRestaurant.Models.Resto
+@{
+    ViewBag.Title = "ShowDetailsRestaurant";
+    ViewBag.Name = "Resto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    @Html.LabelFor(model => model.Name)
+    @Html.TextBoxFor(model => model.Name)
+    @Html.ValidationMessageFor(model => model.Name)
+</div>
+<div>
+    @Html.LabelFor(model => model.Phone)
+    @Html.TextBoxFor(model => model.Phone)
+    @Html.ValidationMessageFor(model => model.Phone)
+</div>
